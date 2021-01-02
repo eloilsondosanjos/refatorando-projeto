@@ -8,14 +8,14 @@
   ✔ 6 - Utilizar função auxiliar para tratar o status
   ✔ 7 - Utilizar arrow function na function do map
   ✔ 8 - Utilizar destructuring de user para parâmetro da function do map
-  9 - Utilizar retorno imediato ao invés da palavra reservada return no map
-  10 - Quebrar renderUserList em mais functions, separado por blocos
-  11 - Transformar renderUserList em arrow function com retorno imediato
+  ✔ 9 - Utilizar retorno imediato ao invés da palavra reservada return no map
+  ✔ 10 - Quebrar renderUserList em mais functions, separado por blocos
+  ✔ 11 - Transformar renderUserList em arrow function com retorno imediato
 */
 
 const getStatusLabel = status => (
   status ? 'Ativado' : 'Desativado'
-)
+);
 
 const renderLine = ({ name, email, telefone = 'Não cadastrado', status }, userIndex) => (
   `<tr> 
@@ -28,14 +28,13 @@ const renderLine = ({ name, email, telefone = 'Não cadastrado', status }, userI
       <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
     </tr>
   `
-)
+);
 
 const renderLines = userData => (
   userData.map(renderLine).join('') 
 );
 
-export default function renderUserList(userData) {
-  return (
+export default userData => (
     `<table class="table table-striped mt-4">
       <thead>
         <tr>
@@ -53,5 +52,5 @@ export default function renderUserList(userData) {
       </tbody>
     </table>
   `
-  )
-};
+);
+
