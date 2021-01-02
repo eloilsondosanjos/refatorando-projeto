@@ -7,7 +7,7 @@
   ✔ 5 - Trocar if (status) por operador ternário
   ✔ 6 - Utilizar função auxiliar para tratar o status
   ✔ 7 - Utilizar arrow function na function do map
-  8 - Utilizar destructuring de user para parâmetro da function do map
+  ✔ 8 - Utilizar destructuring de user para parâmetro da function do map
   9 - Utilizar retorno imediato ao invés da palavra reservada return no map
   10 - Quebrar renderUserList em mais functions, separado por blocos
   11 - Transformar renderUserList em arrow function com retorno imediato
@@ -18,8 +18,7 @@ const getStatusLabel = status => (
 )
 
 export default function renderUserList(userData) {
-  const usersHTML = userData.map(({ name, email, telefone = 'Não cadastrado', status }, userIndex) => {      
-    return (
+  const usersHTML = userData.map(({ name, email, telefone = 'Não cadastrado', status }, userIndex) => (
       `<tr> 
           <th scope="row"> ${(userIndex + 1)}</th>
           <td>${name}</td>
@@ -30,8 +29,7 @@ export default function renderUserList(userData) {
           <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
         </tr>
       `
-    );
-  }).join(''); 
+    )).join(''); 
 
   return (
     `<table class="table table-striped mt-4">
