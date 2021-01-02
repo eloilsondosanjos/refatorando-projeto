@@ -17,20 +17,24 @@ const getStatusLabel = status => (
   status ? 'Ativado' : 'Desativado'
 )
 
-export default function renderUserList(userData) {
-  const usersHTML = userData.map(({ name, email, telefone = 'Não cadastrado', status }, userIndex) => (
-      `<tr> 
-          <th scope="row"> ${(userIndex + 1)}</th>
-          <td>${name}</td>
-          <td>${email}</td>
-          <td>${telefone}</td>
-          <td>${getStatusLabel(status)}</td>
-          <td><button type="button" data-userId=" ${(userIndex + 1)}" class="btn btn-edit btn-link text-primary">Editar</button></td>
-          <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
-        </tr>
-      `
-    )).join(''); 
+const renderLine = ({ name, email, telefone = 'Não cadastrado', status }, userIndex) => (
+  `<tr> 
+      <th scope="row"> ${(userIndex + 1)}</th>
+      <td>${name}</td>
+      <td>${email}</td>
+      <td>${telefone}</td>
+      <td>${getStatusLabel(status)}</td>
+      <td><button type="button" data-userId=" ${(userIndex + 1)}" class="btn btn-edit btn-link text-primary">Editar</button></td>
+      <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
+    </tr>
+  `
+)
 
+const renderLines = userData => (
+  userData.map(renderLine).join('') 
+);
+
+export default function renderUserList(userData) {
   return (
     `<table class="table table-striped mt-4">
       <thead>
@@ -45,7 +49,7 @@ export default function renderUserList(userData) {
         </tr>
       </thead>
       <tbody>
-        ${usersHTML}
+        ${renderLines(userData)}
       </tbody>
     </table>
   `
