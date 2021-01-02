@@ -6,7 +6,7 @@
   ✔ 4 - Utilizar valor de fallback caso não tenha valor de telefone no usuário para exibir o texto 'Não cadastrado'
   ✔ 5 - Trocar if (status) por operador ternário
   ✔ 6 - Utilizar função auxiliar para tratar o status
-  7 - Utilizar arrow function na function do map
+  ✔ 7 - Utilizar arrow function na function do map
   8 - Utilizar destructuring de user para parâmetro da function do map
   9 - Utilizar retorno imediato ao invés da palavra reservada return no map
   10 - Quebrar renderUserList em mais functions, separado por blocos
@@ -18,9 +18,7 @@ const getStatusLabel = status => (
 )
 
 export default function renderUserList(userData) {
-  const usersHTML = userData.map((user, userIndex) => {      
-    let { name, email, telefone = 'Não cadastrado', status } = user;
-  
+  const usersHTML = userData.map(({ name, email, telefone = 'Não cadastrado', status }, userIndex) => {      
     return (
       `<tr> 
           <th scope="row"> ${(userIndex + 1)}</th>
