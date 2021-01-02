@@ -15,13 +15,9 @@
 
 export default function renderUserList(userData) {
   const usersHTML = userData.map(function(user, userIndex) {      
-    let { name, email, telefone = "Não cadastrado", status } = user;
+    let { name, email, telefone = 'Não cadastrado', status } = user;
   
-    if (status) {
-      status = 'Ativado';
-    } else {
-      status = 'Desativado';
-    }
+    const statusLabel = status ? 'Ativado' : 'Desativado';
 
     return (
       `<tr> 
@@ -29,7 +25,7 @@ export default function renderUserList(userData) {
           <td>${name}</td>
           <td>${email}</td>
           <td>${telefone}</td>
-          <td>${status}</td>
+          <td>${statusLabel}</td>
           <td><button type="button" data-userId=" ${(userIndex + 1)}" class="btn btn-edit btn-link text-primary">Editar</button></td>
           <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
         </tr>
