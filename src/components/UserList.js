@@ -29,34 +29,37 @@ export default function renderUserList(userData) {
     }
 
     usersHTML += (
-      '<tr>' +
-        '<th scope="row">' + (i + 1) + '</th>'+
-        '<td>' + name + '</td>' +
-        '<td>' + email + '</td>' +
-        '<td>' + telefone + '</td>' +
-        '<td>' + status + '</td>' +
-        '<td><button type="button" data-userId="'+ (i + 1) +'" class="btn btn-edit btn-link text-primary">Editar</button></td>' +
-        '<td><button type="button" class="btn btn-link text-danger">Excluir</button></td>' +
-      '</tr>'
+      `
+        <tr> 
+          <th scope="row"> ${(i + 1)}</th>
+          <td>${name}</td>
+          <td>${email}</td>
+          <td>${telefone}</td>
+          <td>${status}</td>
+          <td><button type="button" data-userId=" ${(i + 1)}" class="btn btn-edit btn-link text-primary">Editar</button></td>
+          <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
+        </tr>
+      `
     );
   }
 
   return (
-    '<table class="table table-striped mt-4">' +
-      '<thead>' +
-        '<tr>' +
-          '<th scope="col">#</th>' +
-          '<th scope="col">Nome</th>' +
-          '<th scope="col">E-mail</th>' +
-          '<th scope="col">Telefone</th>' +
-          '<th scope="col">Status</th>' +
-          '<th scope="col">&nbsp;</th>' +
-          '<th scope="col">&nbsp;</th>' +
-        '</tr>' +
-      '</thead>' +
-      '<tbody>' +
-        usersHTML +
-      '</tbody>' +
-    '</table>'
+      `<table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Status</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${usersHTML}
+        </tbody>
+      </table>
+    `
   )
 };
