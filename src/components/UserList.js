@@ -1,7 +1,7 @@
 /*
   TODO:
-  1 - Passar para template strings na listagem de usuários
-  2 - Substituir "for" por "map"
+  ✔ 1 - Passar para template strings na listagem de usuários
+  ✔ 2 - Substituir "for" por "map"
   3 - Utilizar destructuring na extração das propriedades de cada usuário com let
   4 - Utilizar valor de fallback caso não tenha valor de telefone no usuáriopara exibir o texto 'Não cadastrado'
   5 - Trocar if (status) por operador ternário
@@ -14,12 +14,9 @@
 */
 
 export default function renderUserList(userData) {
-  var usersHTML = userData.map(function(user, userIndex) {      
-    var name = user.name;
-    var email = user.email;
-    var telefone = user.telefone;
-    var status = user.status;
-
+  const usersHTML = userData.map(function(user, userIndex) {      
+    let { name, email, telefone, status } = user;
+  
     if (status) {
       status = 'Ativado';
     } else {
