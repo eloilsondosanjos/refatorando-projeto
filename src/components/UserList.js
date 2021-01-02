@@ -4,7 +4,7 @@
   ✔ 2 - Substituir "for" por "map"
   ✔ 3 - Utilizar destructuring na extração das propriedades de cada usuário com let
   ✔ 4 - Utilizar valor de fallback caso não tenha valor de telefone no usuário para exibir o texto 'Não cadastrado'
-  5 - Trocar if (status) por operador ternário
+  ✔ 5 - Trocar if (status) por operador ternário
   6 - Utilizar função auxiliar para tratar o status
   7 - Utilizar arrow function na function do map
   8 - Utilizar destructuring de user para parâmetro da function do map
@@ -13,19 +13,21 @@
   11 - Transformar renderUserList em arrow function com retorno imediato
 */
 
+const getStatusLabel = status => (
+  status ? 'Ativado' : 'Desativado'
+)
+
 export default function renderUserList(userData) {
   const usersHTML = userData.map(function(user, userIndex) {      
     let { name, email, telefone = 'Não cadastrado', status } = user;
   
-    const statusLabel = status ? 'Ativado' : 'Desativado';
-
     return (
       `<tr> 
           <th scope="row"> ${(userIndex + 1)}</th>
           <td>${name}</td>
           <td>${email}</td>
           <td>${telefone}</td>
-          <td>${statusLabel}</td>
+          <td>${getStatusLabel(status)}</td>
           <td><button type="button" data-userId=" ${(userIndex + 1)}" class="btn btn-edit btn-link text-primary">Editar</button></td>
           <td><button type="button" class="btn btn-link text-danger">Excluir</button></td>
         </tr>
